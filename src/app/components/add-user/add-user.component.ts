@@ -15,6 +15,8 @@ const uri = '/parent/upload';
 })
 
 export class AddUserComponent implements OnInit {
+    private pwCheck: String;
+    private error: String = '';
     newparent = new Parent;
     uploader: FileUploader = new FileUploader({ url: uri });
     attachmentList: any = [];
@@ -49,7 +51,16 @@ export class AddUserComponent implements OnInit {
         this.newparent.balance = null;
 
         this.newparent.is_parent = true;
-        this.parentService.addNewParent(parent);
-        this.dialogRef.close();
+
+        if (this.newparent.pw != this.pwCheck) {
+            this.error = "Passwords don't match"
+            setTimeout(() => {
+                this.error = "";
+            }, 3000);
+
+        } else {
+            this.parentService.addNewParent(parent);
+            this.dialogRef.close();
+        }
     }
 }

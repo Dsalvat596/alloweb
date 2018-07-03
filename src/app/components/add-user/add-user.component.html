@@ -24,6 +24,13 @@
                 placeholder="Enter password" value="">
         </mat-form-field>
     </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="pwCheck" name="checkpassword" type="password"
+                placeholder="Re-enter password" value="">
+        </mat-form-field>
+        <p class="err">{{error}}</p>
+    </div>
 
 
     <!-- <mat-form-field class="example-full-width"> -->

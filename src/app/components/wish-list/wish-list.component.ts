@@ -85,7 +85,9 @@ export class WishListComponent implements OnInit {
     }
 
     buyItNow(wish: WishList) {
-        this.childService.deductFromBalance(wish);
+        window.open(wish.link, '', 'width=600px,height=600px,resizable=no');
+        window.blur();
+         this.childService.deductFromBalance(wish);
         this.wishListService.removeFromWishList(wish);
         this.wishListService.WishListUpdated.subscribe((resp) => {
 

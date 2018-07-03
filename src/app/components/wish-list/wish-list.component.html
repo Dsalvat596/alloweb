@@ -77,9 +77,12 @@
                     </progress>
 
                     <mat-card-actions>
-                        <a *ngIf="currentRoute =='wish-list/'" mat-raised-button href="{{wish.link}}"
+                        <!-- <a *ngIf="currentRoute =='wish-list/'" mat-raised-button href="{{wish.link}}"
                             class="buyWish" color="primary" target="framename"
-                            [disabled]="wish.progress < 100 " (click)="buyItNow(wish)">Buy</a>
+                            [disabled]="wish.progress < 100 " (click)="buyItNow(wish)">Buy</a> -->
+                            <button mat-raised-button *ngIf="currentRoute =='wish-list/'"
+                                class="buyWish" color="primary" [disabled]="wish.progress < 100 "
+                                (click)="buyItNow(wish)">Buy</button>
 
                         <button mat-button *ngIf="currentRoute =='wish-list/'" (click)="removeWish(wish)">
                             Remove

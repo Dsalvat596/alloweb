@@ -7,6 +7,8 @@
     /* cursor: pointer; */
     padding-right: 25px;
     font-weight: 700;
+    font-family: 'Mogra', cursive;
+    font-size: 25px;
 }
 
 .button-row {
@@ -23,17 +25,84 @@
     padding: 0 14px;
 }
 
-.userImage img {
+.userImageNoRespon img {
     border-radius: 50%;
     vertical-align: middle;
     width: 40px;
     height: 40px;
     object-fit: cover;
-    margin-right: 15px;
+    margin: 0px 5px 0px 15px;
     /* padding: 0px 0px 0px 15px; */
 }
 
 .childBalance {
     font-size: 14px;
     padding: 0px 0px 0px 15px;
+}
+
+.responTasks, .responWishes {
+    display: none;
+}
+
+.hamburger {
+    padding: 0px 5px;
+}
+
+.userNameNoRespon {
+    padding-right: 10px;
+}
+
+.logOut {
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* .responUserName {
+    display: none;
+} */
+
+/* .responImage {
+    display: none;
+} */
+
+/* Responsive - media query **************************/
+
+@media only screen and (max-width: 650px) {
+    .sidePadding {
+        padding: 0px 15px;
+    }
+    .TasksNoRespon, .WishesNoRespon {
+        display: none;
+    }
+    .responTasks, .responWishes {
+        display: block;
+        padding: 0px;
+        min-width: 50px;
+    }
+    .userImageNoRespon img, .userNameNoRespon {
+        display: none;
+    }
+    .responUser {
+        display: block;
+        padding: 0px 15px 8px 15px;
+    }
+    .responUser img {
+        border-radius: 50%;
+        vertical-align: middle;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+    }
+    .hamburger {
+        padding: 0px;
+        min-width: 60px;
+    }
+    /* .matMenu_ {
+        padding: 15px;
+    } */
+    .logo {
+        padding-right: 25px;
+        font-weight: 700;
+        font-family: 'Mogra', cursive;
+        font-size: 20px;
+    }
 }

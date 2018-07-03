@@ -4,26 +4,50 @@
     <!--  routerLink="/parent-main" -->
     <div class="button-row" *ngIf="parent">
         <button mat-button routerLink="/parent-main" *ngIf="parent.is_parent" routerLinkActive="primary">Home</button>
-         <!-- active-link routerLinkActive="mat-accent" -->
+        <!-- active-link routerLinkActive="mat-accent" -->
         <!-- <button mat-button routerLink="/child-main" *ngIf="!parent.is_parent">Home</button> -->
-        <button mat-button (click)="navigateToChildTasks(parent.user_id)"  *ngIf="!parent.is_parent">My Tasks</button>
-        <button mat-button (click)="navigateToChildWishList(parent.user_id)" *ngIf="!parent.is_parent">WishList</button>
+        <button mat-button class="TasksNoRespon" (click)="navigateToChildTasks(parent.user_id)"
+            *ngIf="!parent.is_parent">My Tasks</button>
+        <button mat-button class="WishesNoRespon" (click)="navigateToChildWishList(parent.user_id)"
+            *ngIf="!parent.is_parent">WishList</button>
+
+        <button mat-button class="responTasks" (click)="navigateToChildTasks(parent.user_id)"
+            *ngIf="!parent.is_parent">
+            <mat-icon aria-label=“Tasks”>playlist_add_check
+            </mat-icon>
+        </button>
+        <button mat-button class="responWishes" (click)="navigateToChildWishList(parent.user_id)"
+            *ngIf="!parent.is_parent">
+            <mat-icon aria-label=“Wishlist”>shopping_basket
+            </mat-icon>
+        </button>
+
     </div>
     <span class="example-spacer"></span>
 
-    <div class="userImage" *ngIf="parent">
-        <img src="{{parent.user_img}}" alt="User Image">
-    </div>
-
-    <button mat-button [matMenuTriggerFor]="menu" *ngIf="parent" style="padding: 0px 5px;">
-        {{parent.first_name}} {{parent.last_name}}
-        <mat-icon>keyboard_arrow_down</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="logOut()">Log Out</button>
-    </mat-menu>
     <div *ngIf="parent">
         <span class="childBalance" *ngIf="!parent.is_parent">${{childBalance}}</span>
     </div>
+
+    <div class="userImageNoRespon" *ngIf="parent">
+        <img src="{{parent.user_img}}" alt="User Image">
+    </div>
+
+    <button mat-button class="hamburger" [matMenuTriggerFor]="menu" *ngIf="parent">
+        <span class="userNameNoRespon">{{parent.first_name}} {{parent.last_name}}</span>
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu" class="matMenu_">
+        <div class="responUser" *ngIf="parent">
+            <img src="{{parent.user_img}}" alt="User Image">
+            <!--  class="responImage" -->
+            <span class="responUserName">{{parent.first_name}} {{parent.last_name}}</span>
+        </div>
+        
+        
+        <button class="logOut" mat-menu-item (click)="logOut()">Log Out</button>
+    </mat-menu>
+    
 
 </mat-toolbar>
