@@ -60,6 +60,9 @@ class Task {
     approveTask(updatedTaskId) {
         return this.model.update({ status_id: 3 }, { where: { task_id: updatedTaskId } });
     }
+    unApproveTask(updatedTaskId) {
+        return this.model.update({ status_id: 1 }, { where: { task_id: updatedTaskId } });
+    }
 }
 
 

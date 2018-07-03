@@ -26,7 +26,6 @@ img {
     margin-top: 15px;
     width: 400px;
     background-color: #FFFFFF ; 
-    font-family: 'Indie Flower', cursive;
  }
  
  .mat-card{
@@ -34,7 +33,6 @@ img {
  }
 
 .go{
-    font-family: 'Indie Flower', cursive;
     color: green ; 
 }
 

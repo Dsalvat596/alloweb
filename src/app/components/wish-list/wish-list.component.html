@@ -1,46 +1,97 @@
+<!-- Parent wish view ///////////////////////////////// -->
 <div class="container">
-    <div class="tasks">
-        <!-- work with data-base only  -->
-        <div class="wish-list-item" *ngFor="let wish of wishListData">
+    <div class="row" *ngIf="currentRoute == 'child-view'">
+        <div class="main">
+            <!-- <div class="tasks"> -->
+            <div class="wish-list-item" *ngFor="let wish of wishListData">
 
-            <mat-card class="wish-card">
-                <img class="wishImage" src="{{wish.goal_img}}">
-                <div class="wishTexts">
-                    <h1 class="wishTitle">{{ wish.title }}</h1>
-                    <!-- <h2 class="taskDescription" *ngIf="task.description">{{ task.description }}</h2> -->
-                    <div>
-                        <span class="wishParagraph">{{wish.price | currency}}</span>
-                        <!-- <span class="taskParagraph">{{ task.deadline }}</span> -->
+                <mat-card class="wish-card">
+                    <img class="wishImage" src="{{wish.goal_img}}">
+                    <div class="wishTexts">
+                        <h1 class="wishTitle">{{ wish.title }}</h1>
+                        <div>
+                            <span class="wishParagraph">{{wish.price | currency}}</span>
+                        </div>
                     </div>
-                </div>
-                <progress max="100" value="{{wish.progress}}" class="html5" matTooltip="{{wish.progress}}%"
-                    matTooltipClass="toolTip_">
-                    <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
-                    <div class="progress-bar">
-                        <span style="width: 80%">80%</span>
-                    </div>
-                </progress>
+                    <progress max="100" value="{{wish.progress}}" class="html5" matTooltip="{{wish.progress}}%"
+                        matTooltipClass="toolTip_">
+                        <div class="progress-bar">
+                            <span style="width: 80%">80%</span>
+                        </div>
+                    </progress>
 
-                <mat-card-actions>
-                    <!-- <div> -->
-                    <a *ngIf="currentRoute =='wish-list/'" mat-raised-button href="{{wish.link}}" class="buyWish" color="primary" style="padding-right: 25px;"
-                        target="_blank" [disabled]="wish.progress < 100 " (click)="buyItNow(wish)">Buy</a>
+                    <mat-card-actions>
+                        <a *ngIf="currentRoute =='wish-list/'" mat-raised-button href="{{wish.link}}"
+                            class="buyWish" color="primary" target="framename"
+                            [disabled]="wish.progress < 100 " (click)="buyItNow(wish)">Buy</a>
 
-                    <button mat-button *ngIf="currentRoute =='wish-list/'" (click)="removeWish(wish)">
-                        Cancel
-                      </button>
-                    
-                </mat-card-actions>
-            </mat-card>
+                        <button mat-button *ngIf="currentRoute =='wish-list/'" (click)="removeWish(wish)">
+                            Remove
+                        </button>
 
+                    </mat-card-actions>
+                </mat-card>
+
+            </div>
         </div>
-    </div>
-    <div class="expander-container">
-        <button mat-raised-button *ngIf="currentRoute =='wish-list/'" class="search-popup"
-            (click)="openDialog()">Add a new Wish!</button>
     </div>
 </div>
 
+
+
+
+<!-- Child wish view ///////////////////////////////// -->
+<mat-toolbar class="pageToolbar" *ngIf="currentRoute == 'wish-list/'">
+    <h2 class="tasksPageTitle">My Wish-list</h2>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+        <mat-icon aria-label="Add icon">add</mat-icon>
+        Add a wish
+    </button>
+</mat-toolbar>
+
+<div class="noWishes">
+    <mat-card *ngIf="noWish">
+        <h2>No Wishes :(</h2>
+    </mat-card>
+</div>
+
+<div class="myTasks" *ngIf="currentRoute == 'wish-list/'">
+    <div class="row">
+        <div class="childTaskContainer">
+            <div class="wish-list-item" *ngFor="let wish of wishListData">
+
+                <mat-card class="wish-card">
+                    <img class="wishImage" src="{{wish.goal_img}}">
+                    <div class="wishTexts">
+                        <h1 class="wishTitle">{{ wish.title }}</h1>
+                        <div>
+                            <span class="wishParagraph">{{wish.price | currency}}</span>
+                        </div>
+                    </div>
+                    <progress max="100" value="{{wish.progress}}" class="html5" matTooltip="{{wish.progress}}%"
+                        matTooltipClass="toolTip_">
+                        <div class="progress-bar">
+                            <span style="width: 80%">80%</span>
+                        </div>
+                    </progress>
+
+                    <mat-card-actions>
+                        <a *ngIf="currentRoute =='wish-list/'" mat-raised-button href="{{wish.link}}"
+                            class="buyWish" color="primary" target="framename"
+                            [disabled]="wish.progress < 100 " (click)="buyItNow(wish)">Buy</a>
+
+                        <button mat-button *ngIf="currentRoute =='wish-list/'" (click)="removeWish(wish)">
+                            Remove
+                        </button>
+
+                    </mat-card-actions>
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- <a *ngIf="wish.progress >=100" href="{{wish.link}}" target="_blank"> -->
@@ -49,14 +100,14 @@
                                     <a href="{{wish.link}}" target="_blank">Buy</a>
                                 </button> -->
 
-                            <!-- <app-wish-list-search></app-wish-list-search> -->
+<!-- <app-wish-list-search></app-wish-list-search> -->
 
-                    <!-- <button mat-icon-button *ngIf="currentRoute =='wish-list/'" (click)="removeWish(wish)">
+<!-- <button mat-icon-button *ngIf="currentRoute =='wish-list/'" (click)="removeWish(wish)">
                     <mat-icon class="deleteWwish" aria-label="Delete wish">delete</mat-icon>
                 </button> -->
 
-                <!-- <p class="wishProgress" attr.data-value="{{wish.progress}}"></p> -->
-                <!-- <p class="wishParagraph" attr.data-value="{{wish.progress}}">${{balance}} of ${{wish.price}}</p> -->
+<!-- <p class="wishProgress" attr.data-value="{{wish.progress}}"></p> -->
+<!-- <p class="wishParagraph" attr.data-value="{{wish.progress}}">${{balance}} of ${{wish.price}}</p> -->
 
 <!--                 <img src="{{wish.goal_img}}">
                 <b> {{wish.title}}</b>

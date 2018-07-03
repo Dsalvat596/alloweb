@@ -1,12 +1,12 @@
 <!-- Parent view of child - info ////////////////////////////////////////// -->
 <!-- Child toolbar -->
-<mat-toolbar class="sidePadding" *ngIf="currentRoute == 'child-view'">
+<mat-toolbar class="pageToolbar" *ngIf="currentRoute == 'child-view'">
     <h1 class="childName">
         <img src="{{ img }}">
         <span>{{ first_name }}</span>
     </h1>
     <span class="example-spacer"></span>
-    <span class="childBalance">${{ balance }}</span>
+    <span class="childBalance">${{ childBalance }}</span>
 </mat-toolbar>
 
 <!-- Tasks main pane -->
@@ -15,30 +15,40 @@
         <div class="appTasks">
 
             <h2 class="columnTitle">Tasks</h2>
-            <div *ngIf="noTasks">
-                <h1 *ngIf="currentRoute == 'child-view'">Your Child Has No Tasks - Add some!</h1>
-              
-            </div>
             <app-add-task (addTaskEmit)="addTask($event)"></app-add-task>
 
-            <h3 class="filterTitle">Approved</h3>
-            <app-task-card class="col-3" *ngFor="let task of (tasks | approvedTasks); let i = index;"
-                [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
-                (taskIncompleteEmit)="taskIncomplete($event)" (approveTaskEmit)="approveTask($event)"></app-task-card>
-
-            <h3 class="filterTitle">Completed
-                <mat-icon aria-label="Set all completed tasks approved">done_all</mat-icon>
-            </h3>
-            <app-task-card class="col-3" *ngFor="let task of (tasks | completedTasks); let i = index;"
-                [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
-                (taskIncompleteEmit)="taskIncomplete($event)" (approveTaskEmit)="approveTask($event)"></app-task-card>
-
-            <h3 class="filterTitle">Outstanding
-                <mat-icon aria-label="Set all outstanding tasks complete">done_all</mat-icon>
-            </h3>
-            <app-task-card class="col-3" *ngFor="let task of (tasks | outstandingTasks); let i = index;"
-                [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
-                (taskIncompleteEmit)="taskIncomplete($event)" (approveTaskEmit)="approveTask($event)"></app-task-card>
+            <div class="row">
+                <div *ngIf="noTasks">
+                    <h3 *ngIf="currentRoute == 'child-view'">Your Child Has No Tasks - Add some!</h3>
+                </div>
+                <div class="outstandingTasksColumn">
+                    <h3 class="filterTitle">Outstanding
+                        <mat-icon aria-label="Set all outstanding tasks complete">done_all</mat-icon>
+                    </h3>
+                    <app-task-card class="col-3" *ngFor="let task of (tasks | outstandingTasks); let i = index;"
+                        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
+                        (taskIncompleteEmit)="taskIncomplete($event)" (taskApproveEmit)="taskApprove($event)"
+                        (taskUnApproveEmit)="taskUnApprove($event)"></app-task-card>
+                </div>
+                <div class="completedTasksColumn">
+                    <h3 class="filterTitle">Completed
+                        <mat-icon aria-label="Set all completed tasks approved">done_all</mat-icon>
+                    </h3>
+                    <app-task-card class="col-3" *ngFor="let task of (tasks | completedTasks); let i = index;"
+                        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
+                        (taskIncompleteEmit)="taskIncomplete($event)" (taskApproveEmit)="taskApprove($event)"
+                        (taskUnApproveEmit)="taskUnApprove($event)"></app-task-card>
+                </div>
+            </div>
+            <div class="row">
+                <div class="approvedTasksRow">
+                    <h3 class="filterTitle">Approved</h3>
+                    <app-task-card class="col-3" *ngFor="let task of (tasks | approvedTasks); let i = index;"
+                        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
+                        (taskIncompleteEmit)="taskIncomplete($event)" (taskApproveEmit)="taskApprove($event)"
+                        (taskUnApproveEmit)="taskUnApprove($event)"></app-task-card>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -51,24 +61,40 @@
 
 
 <!-- Child tasks view ////////////////////////////////////////// -->
+<mat-toolbar class="pageToolbar" *ngIf="currentRoute == 'child-task'">
+    <h2 class="tasksPageTitle">My Tasks</h2>
+    <span class="example-spacer"></span>
+    <!-- <span class="childBalance">${{ childBalance }}</span> -->
+</mat-toolbar>
 <div class="myTasks" *ngIf="currentRoute == 'child-task'">
-    <h2 class="columnTitle">My Tasks</h2>
- <div *ngIf="noTasks">
-            
-                <h1 *ngIf="currentRoute == 'child-task'">Ask your parents to give you a task!</h1>
+    <div *ngIf="noTasks">
+        <h1 *ngIf="currentRoute == 'child-task'">Ask your parents to give you a task!</h1>
+    </div>
+
+    <div class="row">
+        <div class="childTaskContainer">
+            <div class="row">
+                <div class="childOutstandingTasks">
+                    <h3 class="filterTitle">Outstanding</h3>
+                    <app-task-card class="col-3" *ngFor="let task of (tasks | outstandingTasks); let i = index;"
+                        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
+                        (taskIncompleteEmit)="taskIncomplete($event)"></app-task-card>
+                </div>
             </div>
-    <h3 class="filterTitle">Approved</h3>
-    <app-task-card class="col-3" *ngFor="let task of (tasks | approvedTasks); let i = index;"
-        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
-        (taskIncompleteEmit)="taskIncomplete($event)"></app-task-card>
-
-    <h3 class="filterTitle">Completed</h3>
-    <app-task-card class="col-3" *ngFor="let task of (tasks | completedTasks); let i = index;"
-        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
-        (taskIncompleteEmit)="taskIncomplete($event)"></app-task-card>
-
-    <h3 class="filterTitle">Outstanding</h3>
-    <app-task-card class="col-3" *ngFor="let task of (tasks | outstandingTasks); let i = index;"
-        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
-        (taskIncompleteEmit)="taskIncomplete($event)"></app-task-card>
+            <div class="row">
+                <div class="childCompletedTasks">
+                    <h3 class="filterTitle">Completed</h3>
+                    <app-task-card class="col-3" *ngFor="let task of (tasks | completedTasks); let i = index;"
+                        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
+                        (taskIncompleteEmit)="taskIncomplete($event)"></app-task-card>
+                </div>
+                <div class="childApprovedTasks">
+                    <h3 class="filterTitle">Approved</h3>
+                    <app-task-card class="col-3" *ngFor="let task of (tasks | approvedTasks); let i = index;"
+                        [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
+                        (taskIncompleteEmit)="taskIncomplete($event)"></app-task-card>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

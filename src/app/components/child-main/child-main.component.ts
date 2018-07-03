@@ -20,7 +20,7 @@ export class ChildMainComponent implements OnInit {
     tasks: Task[] = new Array<Task>();
     public user: Child;
     public img;
-    public balance;
+    public childBalance;
     public currentRoute: String;
     public wishListData: WishList[];
     public first_name;
@@ -48,13 +48,20 @@ export class ChildMainComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.childService.childUpdated.subscribe((data) => {
+            console.log(data);
+            
+            this.childBalance = data.balance;
+        });
+
         this.route.params.subscribe((params: Params) => {
             this.childId = params.id;
-            this.childService.getChildById(this.childId)
+            this.childService.getChildById(this.childId);
+
             this.childService.childUpdated.subscribe((resp)=>{
                this.user = resp;
                this.img = this.user.user_img;
-               this.balance = this.user.balance;
+            //    this.childBalance = this.user.balance;
                this.first_name = this.user.first_name
                console.log(this.user);
             })
@@ -69,7 +76,7 @@ export class ChildMainComponent implements OnInit {
         this.wishListService.WishListUpdated.subscribe((data) => {
             this.wishListData = data;
             for (let i = 0; i < this.wishListData.length; i++) {
-                this.wishListData[i].progress = this.balance / this.wishListData[i].price * 100;
+                this.wishListData[i].progress = this.childBalance / this.wishListData[i].price * 100;
 
             }
 
@@ -94,10 +101,19 @@ export class ChildMainComponent implements OnInit {
         this.taskService.taskIncomplete(task);
     }
 
-    approveTask(task) {
-        console.log("child-main approveTask");
-        console.log(task);
+    taskApprove(task) {
+        // console.log("child-main approveTask");
+        // console.log(task);
 
         this.taskService.approveTask(task);
+        this.childService.getChildById(task.user_id);
     }
+    taskUnApprove(task) {
+        // console.log("child-main approveTask");
+        // console.log(task);
+
+        this.taskService.unApproveTask(task);
+        this.childService.getChildById(task.user_id);
+    }
+    
 }

@@ -12,11 +12,13 @@ import { ChildService } from '../../services/child.service';
     styleUrls: ['./wish-list.component.css']
 })
 export class WishListComponent implements OnInit {
-  public childId: number;
-  public wishListData: WishList[];
-  public progress;
-  public currentRoute: String;
-  public balance;
+    public childId: number;
+    public wishListData: WishList[];
+    public progress;
+    public currentRoute: String;
+    public balance;
+    public noWish: Boolean;
+
 
     constructor(private wishListService: WishListService,
         private childService: ChildService,
@@ -42,17 +44,21 @@ export class WishListComponent implements OnInit {
         this.wishListService.getWishList(this.childId)
         this.wishListService.WishListUpdated.subscribe((data) => {
             this.wishListData = data;
+            if (typeof this.wishListData[0] == 'undefined') {
+                this.noWish = true;
+                console.log(this.noWish);
+                // return
+            } else {
+                this.noWish = false
+                console.log(this.noWish);
+            }
             for (let i = 0; i < this.wishListData.length; i++) {
                 if (Math.floor(this.balance / this.wishListData[i].price * 100) >= 100) {
                     this.wishListData[i].progress = 100
                 } else {
                     this.wishListData[i].progress = Math.floor(this.balance / this.wishListData[i].price * 100);
-                    // console.log(this.wishListData[i].progress)
                 }
             }
-
-            //   console.log(this.wishListData);
-
         })
     }
 
@@ -60,8 +66,8 @@ export class WishListComponent implements OnInit {
 
         let dialogRef = this.dialog.open(WishListSearchComponent, {
             data: this.childId,
-            height: '300px',
-            width: '500px'
+            height: '600px',
+            width: '800px'
         });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -78,14 +84,13 @@ export class WishListComponent implements OnInit {
         })
     }
 
-    buyItNow(wish: WishList){
+    buyItNow(wish: WishList) {
         this.childService.deductFromBalance(wish);
-       // this.childService.childUpdated.subscribe((resp) =>{
-            this.wishListService.removeFromWishList(wish);
-            this.wishListService.WishListUpdated.subscribe((resp) => {
+        this.wishListService.removeFromWishList(wish);
+        this.wishListService.WishListUpdated.subscribe((resp) => {
 
-            });
-       // })
-       
+        });
+        // })
+
     }
 }

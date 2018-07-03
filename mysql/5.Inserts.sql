@@ -3,7 +3,7 @@ use sql9244365;
 -- insert into User
 -- ( first_name, last_name, email ,user_img, is_parent)
 -- values
--- ('Daniel', 'wow', 'ddd@email.com', 'https://m.media-amazon.com/images/M/MV5BMjEzMjk4NDU4MF5BMl5BanBnXkFtZTcwMDMyNjQzMg@@._V1_UX214_CR0,0,214,317_AL_.jpg', true);
+-- ('Parent', 'Parents', 'p@p.com', 'https://m.media-amazon.com/images/M/MV5BMjEzMjk4NDU4MF5BMl5BanBnXkFtZTcwMDMyNjQzMg@@._V1_UX214_CR0,0,214,317_AL_.jpg', true);
 -- 
 -- insert into User
 -- (parent_id, first_name, last_name, email ,user_img, balance, is_parent)

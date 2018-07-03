@@ -14,20 +14,18 @@
 
         <mat-checkbox class="completeCheck" color="primary" [(indeterminate)]="indeterminate"
             [labelPosition]="labelPosition" [checked]="task.status_id == 2 || task.status_id == 3"
-            matTooltip="Task completion" matTooltipClass="toolTip_" (click)="taskStatusChange(task)">Completed
+            matTooltip="Task completion" matTooltipClass="toolTip_"
+            (click)="taskStatusChange(task)">Completed
         </mat-checkbox>
-
-        <!-- <span *ngIf="task.status_id == 3">and approved</span> -->
-
-        <!--  *ngIf="task.status_id < 3 " -->
+        <!--  *ngIf="completedCheckHideForChild()" -->
 
         <mat-checkbox class="approveCheck" color="primary" [(indeterminate)]="indeterminate"
-            [labelPosition]="labelPosition" [checked]="task.status_id == 3" [disabled]="currentRoute == 'child-task'"
-            matTooltip="Task approval" matTooltipClass="toolTip_" 
-            (click)="approveTask(task)">Approved
+            [labelPosition]="labelPosition" [checked]="task.status_id == 3"
+            [disabled]="currentRoute == 'child-task'" matTooltip="Task approval"
+            matTooltipClass="toolTip_" (click)="taskApprovalChange(task)">Approved
         </mat-checkbox>
         <!-- *ngIf="currentRoute == 'child-view'" -->
-        
+
         <!-- <button mat-icon-button color="primary" *ngIf="currentRoute == 'child-view'"
             matTooltip="Task approval" matTooltipClass="toolTip_" (click)="approveTask(task)">
 

@@ -11,7 +11,7 @@ router.get('/:userId', async (req, res) => {
     try {
         res.send(JSON.stringify(await wishList.getAllRows(userID)));
     } catch (err) {
-        alert(err);
+        console.log(err);
     }
 })
 
@@ -23,7 +23,7 @@ router.post('/addToWishList', async (req, res) =>{
         console.log(item.title+ 'added to your wishlist!')
         res.send((await wishList.getAllRows(item.user_id)));
     } catch (err) {
-        alert(err)
+        console.log(err)
     }
 
 })
@@ -39,7 +39,7 @@ router.delete('/removeFromWishList/:wishId/user/:userId', async (req, res) => {
         await wishList.removeFromWishList(wish);
          res.send(JSON.stringify(await wishList.getAllRows(user)));
     } catch (err){
-        alert(err);
+        console.log(err);
     }
 })
 
@@ -48,12 +48,12 @@ router.delete('/removeFromWishList/:wishId/user/:userId', async (req, res) => {
 router.put('/deductFromBalance', async (req, res) =>{
     let wish = req.body.wish;
     let userId = req.body.wish.user_id;
-    console.log(wish)
+    console.log(wish);
     try{
         await user.buyNow(wish);
         res.send(JSON.stringify(await user.getChildById(userId)));
     } catch (err){
-        alert(err);
+        console.log(err);
     }
 })
 

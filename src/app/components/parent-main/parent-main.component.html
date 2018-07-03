@@ -1,9 +1,13 @@
-<button mat-raised-button class="add-kid" color="primary" (click)="openDialog(_currentParent)">Add a child</button>
-
+<mat-toolbar class="pageToolbar">
+    <h2 class="tasksPageTitle">{{_currentParent.last_name}} Kids</h2>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" (click)="openDialog(_currentParent)">
+        <mat-icon aria-label="Add icon">add</mat-icon>
+        Add a child
+    </button>
+</mat-toolbar>
 <div class="parent-landing">
-
-    <h1>{{_currentParent.last_name}} Kids</h1>
-
+    
     <div class="flex-container">
         <app-child-card class="appChildCard" *ngFor="let child of children" [child]="child"></app-child-card>
     </div>

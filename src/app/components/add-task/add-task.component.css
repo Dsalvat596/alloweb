@@ -1,11 +1,13 @@
-
-
 .addTask {
     padding: 10px 15px 0px 15px;
     border: 0px;
     margin: 0px;
     margin-bottom: 15px;
-    max-width: 418px;
+    /* max-width: 418px; */
+    max-width: 100%;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .addTaskForm {

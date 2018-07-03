@@ -60,19 +60,25 @@ export class TaskService implements OnInit {
         });
     }
 
-    taskIncompleteUnpay(task: Task) {
-        // console.log(task);
-        this.http.put<any>('/child/taskIncompleteUnpay', task).subscribe((data) => {
-            this.tasksArr = data;
-            // console.log(this.tasksArr);
-            this.tasksSubject.next(this.tasksArr);
-        });
-    }
+    // taskIncompleteUnpay(task: Task) {
+    //     // console.log(task);
+    //     this.http.put<any>('/child/taskIncompleteUnpay', task).subscribe((data) => {
+    //         this.tasksArr = data;
+    //         // console.log(this.tasksArr);
+    //         this.tasksSubject.next(this.tasksArr);
+    //     });
+    // }
 
     approveTask(task: Task) {
         this.http.put<any>('/child/approveTask', task).subscribe((data) => {
             this.tasksArr = data;
-            // console.log(this.tasksArr);
+            this.tasksSubject.next(this.tasksArr);
+        });
+    }
+
+    unApproveTask(task: Task) {
+        this.http.put<any>('/child/unApproveTask', task).subscribe((data) => {
+            this.tasksArr = data;
             this.tasksSubject.next(this.tasksArr);
         });
     }

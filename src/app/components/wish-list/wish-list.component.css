@@ -1,9 +1,54 @@
-.container {
+.pageToolbar {
+    padding: 0px 50px;
+    /* background-color: #E9EAED; */
+}
+
+.tasksPageTitle {
+    text-align: left;
+    color: #4CAF50;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 10px 0px;
+    margin: 0px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.row {
     display: flex;
+    flex-wrap: wrap;
+}
+
+.main {
+    flex: 60%;
+    background-color: #E9EAED;
+    padding: 20px 50px 20px 50px;
 }
 
 .tasks {
     flex: 1;
+}
+
+.noWishes {
+    padding: 30px 30px 30px 30px;
+    max-width: 260px;
+    min-width: 220px;
+    margin: 0px 15px 15px 0px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.myTasks {
+    padding: 15px;
+    margin: 0 auto;
+    max-width: 600px;
+    min-width: 200px;
+    /* width: 400px; */
+    /* max-width: */
 }
 
 .expander-container {
@@ -14,8 +59,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-bottom: 25px;
+    /* margin-top: 15px; */
 }
 
 .mat-progress-bar {
@@ -34,7 +79,6 @@ img {
     margin-top: 15px;
     width: 400px;
     background-color: #FFFFFF;
-    font-family: 'Indie Flower', cursive;
 } */
 
 mat-card.wish-card {
@@ -111,22 +155,15 @@ img.wishImage {
     padding: 0.5%;
 }
 
-.search-popup {
-    margin-top: 30px;
-    margin-left: 15px;
-    padding: 5px;
-}
-
 /* .go {
     top: 25px;
-    font-family: 'Indie Flower', cursive;
     color: green;
 } */
 
-.buyWish {
+/* .buyWish {
     padding-right: 15px;
     margin-right: 15px;
-}
+} */
 
 .deleteWwish {
     width: 15px;

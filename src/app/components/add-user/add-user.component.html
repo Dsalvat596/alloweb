@@ -1,60 +1,57 @@
 <h2>Add a parent</h2>
 <form class="parent-form">
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="newparent.last_name"
-      name="last_name" placeholder="Enter Last Name"
-      value="">
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="newparent.first_name"
-      name="first_name" placeholder="Enter First Name"
-      value="">
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="newparent.email"
-      name="email" type="email" placeholder="Enter Email"
-      value="">
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="newparent.pw"
-      name="password" type="password" placeholder="Enter password"
-      value="">
-  </mat-form-field>
-</div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="newparent.last_name" name="last_name" placeholder="Enter Last Name"
+                value="">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="newparent.first_name" name="first_name" placeholder="Enter First Name"
+                value="">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="newparent.email" name="email" type="email"
+                placeholder="Enter Email" value="">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="newparent.pw" name="password" type="password"
+                placeholder="Enter password" value="">
+        </mat-form-field>
+    </div>
 
 
-  <!-- <mat-form-field class="example-full-width"> -->
-<div>
+    <!-- <mat-form-field class="example-full-width"> -->
+    <div>
         <input type="file" name="image" id="fileUpload" multiple ng2FileSelect
             [uploader]="uploader" value="" accept="image/*" style="color: white;">
-            
-</div>
 
-        <div class="row uploadList" *ngFor="let item of uploader.queue">
-            <div>{{item.file.name}}</div>
-            <div>
-                <div class="progress">
-                    <div class="progress-bar bg-success" [ngStyle]="{'width':item.progresss+'%'}"></div>
-                </div>
+    </div>
+
+    <div class="row uploadList" *ngFor="let item of uploader.queue">
+        <div>{{item.file.name}}</div>
+        <div>
+            <div class="progress">
+                <div class="progress-bar bg-success" [ngStyle]="{'width':item.progresss+'%'}"></div>
             </div>
-            <div>
-                
-                <button type="button" class="btn btn-dark" (click)="item.upload()">Upload Image</button>
-                <button type="button" class="btn btn-danger" (click)="item.remove()">Cancel Image</button>
-            </div>
-            
-            </div>
-  <!-- </mat-form-field> -->
+        </div>
+        <div>
+
+            <button type="button" class="btn btn-dark" *ngIf="this.isButtonVisible"
+                (click)="item.upload()">Upload Image</button>
+            <button type="button" class="btn btn-danger" *ngIf="this.isButtonVisible"
+                (click)="item.remove()">Cancel Image</button>
+        </div>
+
+    </div>
+    <!-- </mat-form-field> -->
 
 
-  <button mat-raised-button type="button"
-    color="primary" (click)="addParent(newparent)"  
-    class="add-parent">Add</button>
+    <button mat-raised-button type="button" color="primary" (click)="addParent(newparent)"
+        class="add-parent">Add</button>
 </form>

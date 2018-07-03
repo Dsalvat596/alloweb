@@ -5,11 +5,11 @@ const router = express.Router();
 const user = require('../dataAccess/user-model');
 const task = require('../dataAccess/task-model')
 const multer = require('multer'); 
-
+var path = require('path');
 
 // upload a photo for the child 
 
-var path = require('path');
+
 
 var store = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -22,8 +22,10 @@ var store = multer.diskStorage({
 
 var upload = multer({ storage: store }).single('file');
 
+
+
 router.post('/upload', function (req, res, next) {
-    console.log(req.path);
+    // console.log(req.path);
     upload(req, res, function (err) {
         if (err) {
             return res, status(501).json({ error: err });
@@ -32,29 +34,6 @@ router.post('/upload', function (req, res, next) {
         return res.json({ originalname: req.file.originalname, uploadname: req.file.filename });
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -128,14 +107,12 @@ router.put('/approveTask', async (req, res) => {
     }
 })
 
-
-// Task incomplete & unpay - update
-router.put('/taskIncompleteUnpay', async (req, res) => {
+router.put('/unApproveTask', async (req, res) => {
     let taskId = req.body.task_id;
     let userId = req.body.user_id;
     let payment = req.body.payment;
     try {
-        await task.taskIncomplete(taskId);
+        await task.unApproveTask(taskId);
         await user.taskUnPay(userId, payment);
         res.send(JSON.stringify(await task.getAllRows(userId)));
     }
@@ -167,17 +144,3 @@ router.get('/getChildById/:childId', async (req, res) =>{
 })
 module.exports = router;
 
-
-
-
-        // .then((data) => {
-        //     console.log(data); // rows affected
-        // }, (err) => {
-        //     console.error(err)
-        // });
-        // // res.send(data);
-        // // res.send(JSON.stringify(await task.getAllRows(userId)));
-
-            // console.log("++++++++++++++++++++++++++");
-    // console.log("childApi - taskIncomplete - taskId");
-    // console.log(req.body);

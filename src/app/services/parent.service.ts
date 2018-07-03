@@ -10,10 +10,10 @@ export class ParentService {
     public Parent: Parent;
     public checkEmail: Parent;
     public dataUpdated: Observable<Parent>;
-    private dataSubject: Subject<Parent>;
+    private dataSubject: Subject<Parent> = new Subject<Parent>();
 
     constructor(private http: HttpClient) {
-        this.dataSubject = new Subject<Parent>();
+        // this.dataSubject = new Subject<Parent>();
         this.dataUpdated = this.dataSubject.asObservable();
     }
 
@@ -28,7 +28,7 @@ export class ParentService {
 
         return this.http.post<Parent>('/parent/addUser', { newParent: parent }).subscribe((resp) => {
         })
-    } 
+    }
 
     ValidateEmail(mail) {
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

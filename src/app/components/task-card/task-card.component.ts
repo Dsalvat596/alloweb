@@ -41,9 +41,14 @@ export class TaskCardComponent implements OnInit {
 
     @Input() task: Task;
     @Input() currentRoute: String;
+
     @Output() taskCompleteEmit: EventEmitter<Task> = new EventEmitter();
     @Output() taskIncompleteEmit: EventEmitter<Task> = new EventEmitter();
-    @Output() approveTaskEmit: EventEmitter<Task> = new EventEmitter();
+
+    @Output() taskApproveEmit: EventEmitter<Task> = new EventEmitter();
+    @Output() taskUnApproveEmit: EventEmitter<Task> = new EventEmitter();
+
+
 
     tasks: Task[] = new Array<Task>();
 
@@ -57,16 +62,34 @@ export class TaskCardComponent implements OnInit {
         // console.log(task);
         if (task.status_id == 1) {
             this.taskCompleteEmit.emit(task);
-            // this.taskCompletionCheck = true;
         } else if (task.status_id >= 2) {
             this.taskIncompleteEmit.emit(task);
-            // this.taskCompletionCheck = false;
         }
     }
 
-    approveTask(task) {
-        console.log("task-card approveTask - task");
-        console.log(task);
-        this.approveTaskEmit.emit(task);
+    taskApprovalChange(task) {
+        // console.log("task-card approveTask - task");
+        // console.log(task);
+        if (task.status_id < 3) {
+            this.taskApproveEmit.emit(task);
+        } else if (task.status_id == 3) {
+            this.taskUnApproveEmit.emit(task);
+        }
     }
+
+
+    // completedCheckHideForChild() {
+    //     if (this.currentRoute == 'child-view' && this.task.status_id == 3 ) {
+    //         return false;
+    //     } else if (this.currentRoute == 'child-view' && this.task.status_id <= 2) {
+    //         return true;
+    //     }
+
+
+    //     if (this.task.status_id == 3 && this.currentRoute == 'child-task') {
+    //         return false;
+    //     } else {
+    //         return true;
+    //     }
+    // }
 }

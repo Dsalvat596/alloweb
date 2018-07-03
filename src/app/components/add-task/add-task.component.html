@@ -10,7 +10,7 @@
                     maxlength="200" [(ngModel)]="newTask.description" name="description"></textarea>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field style="padding-right: 15px;">
                 <mat-label>Pay</mat-label>
                 <mat-select #newTask.payment required [(ngModel)]="newTask.payment" name="payment">
                     <mat-option value="10">$10</mat-option>
@@ -21,7 +21,8 @@
                     <mat-option value="20">$20</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field>
+
+            <mat-form-field style="padding-left: 15px;">
                 <input matInput required [matDatepicker]="picker" placeholder="Deadline" [(ngModel)]="newTask.deadline" name="deadline">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
