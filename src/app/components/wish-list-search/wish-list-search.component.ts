@@ -28,16 +28,16 @@ export class WishListSearchComponent implements OnInit {
 
   ngOnInit() {
      // this.wishListService.getWishList(this.childId)
-        this.childId = this.data
-        console.log(this.childId)
+        this.childId = this.data;
+        // console.log(this.childId);
     }
 
     getItems() { 
-        this.wishListService.findItemsByKeywords(this.keyword)
+        this.wishListService.findItemsByKeywords(this.keyword);
         this.wishListService.EbayDataUpdated.subscribe((data)=>{
         
            this.wishSearchData = data;
-            console.log(this.wishSearchData);
+            // console.log(this.wishSearchData);
             
         })
         
@@ -56,7 +56,7 @@ export class WishListSearchComponent implements OnInit {
             progress: 0 
         }
         
-        this.wishListService.addToWishList(itemToAdd)
+        this.wishListService.addToWishList(itemToAdd);
         this.dialogRef.close();
         
     }

@@ -41,16 +41,16 @@ export class WishListComponent implements OnInit {
 
         this.currentRoute = this.router.url.slice(1, 11);
         // console.log(this.currentRoute);
-        this.wishListService.getWishList(this.childId)
+        this.wishListService.getWishList(this.childId);
         this.wishListService.WishListUpdated.subscribe((data) => {
             this.wishListData = data;
             if (typeof this.wishListData[0] == 'undefined') {
                 this.noWish = true;
-                console.log(this.noWish);
+                // console.log(this.noWish);
                 // return
             } else {
                 this.noWish = false
-                console.log(this.noWish);
+                // console.log(this.noWish);
             }
             for (let i = 0; i < this.wishListData.length; i++) {
                 if (Math.floor(this.balance / this.wishListData[i].price * 100) >= 100) {
@@ -87,7 +87,7 @@ export class WishListComponent implements OnInit {
     buyItNow(wish: WishList) {
         window.open(wish.link, '', 'width=600px,height=600px,resizable=no');
         window.blur();
-         this.childService.deductFromBalance(wish);
+        this.childService.deductFromBalance(wish);
         this.wishListService.removeFromWishList(wish);
         this.wishListService.WishListUpdated.subscribe((resp) => {
 

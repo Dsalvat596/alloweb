@@ -1,60 +1,64 @@
 <h2>Add a child</h2>
 <form class="child-form">
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="newChild.last_name"
-      name="last_name" placeholder="Enter Last Name"
-      value="">
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="newChild.first_name"
-      name="first_name" placeholder="Enter First Name"
-      value="">
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="newChild.email"
-      name="email" type="email" placeholder="Enter Email"
-      value="">
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [(ngModel)]="newChild.pw"
-      name="password" type="password" placeholder="Enter password"
-      value="">
-  </mat-form-field>
-</div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="newChild.first_name" name="first_name" placeholder="Enter First Name"
+                value="">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="newChild.last_name" name="last_name" placeholder="Enter Last Name"
+                value="">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="newChild.email" name="email" type="email"
+                placeholder="Enter Email" value="">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="newChild.pw" name="password" type="password"
+                placeholder="Enter password" value="">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="pwCheck" name="checkpassword" type="password"
+                placeholder="Re-enter password" value="">
+        </mat-form-field>
+        <p class="err">{{error}}</p>
+    </div>
 
 
-  <!-- <mat-form-field class="example-full-width"> -->
-<div>
+    <!-- <mat-form-field class="example-full-width"> -->
+    <div>
         <input type="file" name="image" id="fileUpload" multiple ng2FileSelect
             [uploader]="uploader" value="" accept="image/*" style="color: white;">
-            
-</div>
 
-        <div class="row uploadList" *ngFor="let item of uploader.queue">
-            <div>{{item.file.name}}</div>
-            <div>
-                <div class="progress">
-                    <div class="progress-bar bg-success" [ngStyle]="{'width':item.progresss+'%'}"></div>
-                </div>
+    </div>
+
+    <div class="row uploadList" *ngFor="let item of uploader.queue">
+        <div>{{item.file.name}}</div>
+        <div>
+            <div class="progress">
+                <div class="progress-bar bg-success" [ngStyle]="{'width':item.progresss+'%'}"></div>
             </div>
-            <div>
-                
-                <button *ngIf="this.isButtonVisible" type="button" class="btn btn-dark" (click)="item.upload()">Upload Image</button>
-                <button *ngIf="this.isButtonVisible" type="button" class="btn btn-danger" (click)="item.remove()">Cancel Image</button>
-            </div>
-            
-            </div>
-  <!-- </mat-form-field> -->
+        </div>
+        <div>
+
+            <button *ngIf="this.isButtonVisible" type="button" class="btn btn-dark"
+                (click)="item.upload()">Upload Image</button>
+            <button *ngIf="this.isButtonVisible" type="button" class="btn btn-danger"
+                (click)="item.remove()">Cancel Image</button>
+        </div>
+
+    </div>
+    <!-- </mat-form-field> -->
 
 
-  <button mat-raised-button type="button"
-    color="primary" (click)="addChild(newChild)"  
-    class="add-child">Add</button>
+    <button mat-raised-button type="button" color="primary" (click)="addChild(newChild)"
+        class="add-child">Add</button>
 </form>

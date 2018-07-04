@@ -3,8 +3,6 @@
 }
 
 .logo {
-    /* margin: 0px 25px 0px 0px; */
-    /* cursor: pointer; */
     padding-right: 25px;
     font-weight: 700;
     font-family: 'Mogra', cursive;
@@ -56,9 +54,9 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-/* .responUserName {
+.responUser {
     display: none;
-} */
+}
 
 /* .responImage {
     display: none;

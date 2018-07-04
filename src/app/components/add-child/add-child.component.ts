@@ -15,6 +15,8 @@ const uri = '/child/upload';
 })
 
 export class AddChildComponent implements OnInit {
+    private pwCheck: String;
+    private error: string = '';
     newChild = new Child;
     uploader: FileUploader = new FileUploader({ url: uri });
     attachmentList: any = [];
@@ -48,7 +50,15 @@ export class AddChildComponent implements OnInit {
         this.newChild.parent_id = this.data.user_id
         this.newChild.is_parent = false;
         this.newChild.balance = 5;
-        this.childService.addNewChild(child);
-        this.dialogRef.close();
+        if (this.newChild.pw != this.pwCheck) {
+            this.error = "Passwords don't match"
+            setTimeout(() => {
+                this.error = "";
+            }, 3000);
+
+        } else {
+            this.childService.addNewChild(child);
+            this.dialogRef.close();
+        }
     }
 }

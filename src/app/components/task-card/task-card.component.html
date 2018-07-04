@@ -14,7 +14,7 @@
 
         <mat-checkbox class="completeCheck" color="primary" [(indeterminate)]="indeterminate"
             [labelPosition]="labelPosition" [checked]="task.status_id == 2 || task.status_id == 3"
-            matTooltip="Task completion" matTooltipClass="toolTip_"
+            matTooltip="Task completion" matTooltipClass="toolTip_" [disabled]="task.status_id == 3"
             (click)="taskStatusChange(task)">Completed
         </mat-checkbox>
         <!--  *ngIf="completedCheckHideForChild()" -->

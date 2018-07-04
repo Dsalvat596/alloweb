@@ -66,8 +66,11 @@ class User {
 
 
     getChildById(childId) {
-        console.log(childId);
+        console.log("+++++++++++++++");
+        console.log("getChildById");
         
+        
+        console.log(childId);
         return this.model.findById(childId);
         // return this.model.find({ where: { user_id: childId } });
     }
@@ -88,13 +91,22 @@ class User {
     }
 
     taskPay(userId, payment) {
+        console.log("+++++++++++++++");
+        console.log("taskPay");
+        console.log(userId);
+        console.log(payment);
+        
         return this.model.findById(userId).then(user => {
             return user.increment('balance', { by: payment });
         });
     }
 
     taskUnPay(userId, payment) {
-        return this.model.findById(userId).then(user => {
+        console.log("+++++++++++++++");
+        console.log("taskUnPay");
+        console.log(userId);
+        console.log(payment);
+         return this.model.findById(userId).then(user => {
             return user.decrement('balance', { by: payment });
         });
     }

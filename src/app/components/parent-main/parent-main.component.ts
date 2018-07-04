@@ -52,7 +52,7 @@ export class ParentMainComponent implements OnInit {
 
         if (sessionStorage.getItem("loggedIn") == "true") {
             this.parentService.dataUpdated.subscribe((data) => {
-                console.log(data)
+                // console.log(data)
                 this.parent = data[0];
             });
         }
@@ -64,7 +64,7 @@ export class ParentMainComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            // console.log('The dialog was closed');
         });
     }
 

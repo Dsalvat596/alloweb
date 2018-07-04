@@ -44,16 +44,17 @@ export class ChildService implements OnInit  {
 
 
     addNewChild(child: Child) {
-        console.log(child);
+        // console.log(child);
         return this.http.post<Child[]>('/parent/addChild', { newChild: child }).subscribe((resp) => {
             this.Children = resp;
             this.dataSubject.next(this.Children);
         })
     }
 
-    getChildById(childId) {
-        console.log(childId)
-        return this.http.get<Child>('/child/getChildById/' + childId).subscribe((resp) => {
+    getChildById(childId): void {
+        // console.log(childId)
+        this.http.get<any>('/child/getChildById/' + childId).subscribe((resp) => {
+            console.log("child-service get child obj by id:");
             console.log(resp);
             
             this.childData = resp;
@@ -63,7 +64,7 @@ export class ChildService implements OnInit  {
 
     // Daniel - buy wish - header change
     deductFromBalance(wish: WishList): void  {
-        console.log(wish.user_id)
+        // console.log(wish.user_id)
         this.http.put<any>('/wishList/deductFromBalance/', { wish: wish }).subscribe((resp) => {
             console.log(resp);
             

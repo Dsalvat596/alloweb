@@ -71,14 +71,20 @@ export class TaskCardComponent implements OnInit {
         // console.log("task-card approveTask - task");
         // console.log(task);
         if (task.status_id < 3) {
+            console.log("task card - task approve emit");
+            console.log(task);
             this.taskApproveEmit.emit(task);
         } else if (task.status_id == 3) {
+            console.log("task card - task unapprove emit");
+            console.log(task);
             this.taskUnApproveEmit.emit(task);
         }
     }
+}
 
 
-    // completedCheckHideForChild() {
+
+  // completedCheckHideForChild() {
     //     if (this.currentRoute == 'child-view' && this.task.status_id == 3 ) {
     //         return false;
     //     } else if (this.currentRoute == 'child-view' && this.task.status_id <= 2) {
@@ -92,4 +98,3 @@ export class TaskCardComponent implements OnInit {
     //         return true;
     //     }
     // }
-}

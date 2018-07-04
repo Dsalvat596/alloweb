@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
 
         if (sessionStorage.loggedIn == "true") {
             this.parentService.dataUpdated.subscribe((data) => {
-                console.log(data)
+                // console.log(data)
                 this.parent = data[0];
             });
         }
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
     }
 
     navigateToChildWishList(userId) {
-        console.log(userId);
+        // console.log(userId);
         this.router.navigate(['/wish-list/' + userId]);
 
     }

@@ -7,6 +7,7 @@ export class Child {
     user_img: string;
     balance: number;
     is_parent: boolean = false;
+    pw: string;
 }
 
 

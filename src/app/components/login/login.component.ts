@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         } else {
             this.parentService.checkParent(this.parent.email);
             this.parentService.dataUpdated.subscribe((resp) => {
-                console.log(resp)
+                // console.log(resp);
                 if (!resp[0]) {
                     this.error = '*Email not found';
                     setTimeout(() => {
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            // console.log('The dialog was closed');
         });
     }
 }

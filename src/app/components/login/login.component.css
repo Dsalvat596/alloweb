@@ -36,6 +36,11 @@ body {
     margin-bottom: 10px;
 }
 
+.welcomeLogo {
+    font-family: 'Mogra', cursive;
+}
+
+
 .login-box-body {
     width: auto;
     height: 100%;
@@ -88,12 +93,12 @@ login {
     color: red;
 }
 
-p{
+p {
     text-align: center;
 }
 
-p:hover{
-text-decoration: underline;
-color: rgb(52, 88, 155);
-cursor: pointer;
+p:hover {
+    text-decoration: underline;
+    color: rgb(52, 88, 155);
+    cursor: pointer;
 }

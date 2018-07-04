@@ -18,7 +18,7 @@ export class AddTaskComponent implements OnInit {
     }
 
     showAllAddTask() {
-        console.log("Trying to focus");
+        // console.log("Trying to focus");
         this.inputFocus = true;
     }
 

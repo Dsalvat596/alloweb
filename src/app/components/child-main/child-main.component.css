@@ -145,6 +145,23 @@ h3.filterTitle {
     margin-top: 20px;
 }
 
+.noTasks {
+    background-color: #FEF9DA;
+    border: 1px solid #e6d678;
+    display: block;
+    margin: 0px;
+    padding: 15px;
+    /* padding: 10px; */
+}
+
+.noTasks h3 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #9d8a59;
+}
+
 .childSubTitle {
     /* text-align: left; */
     color: #4CAF50;
@@ -267,4 +284,3 @@ mat-grid-tile {
 .split right {
     margin-top: 10px;
 }
-

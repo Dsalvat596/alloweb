@@ -17,13 +17,16 @@
             <h2 class="columnTitle">Tasks</h2>
             <app-add-task (addTaskEmit)="addTask($event)"></app-add-task>
 
+            <div class="noTasks" *ngIf="noTasks">
+                <h3 *ngIf="currentRoute == 'child-view'">*Your Child Has No Tasks - Add some!</h3>
+            </div>
+
             <div class="row">
-                <div *ngIf="noTasks">
-                    <h3 *ngIf="currentRoute == 'child-view'">Your Child Has No Tasks - Add some!</h3>
-                </div>
+
+
                 <div class="outstandingTasksColumn">
                     <h3 class="filterTitle">Outstanding
-                        <mat-icon aria-label="Set all outstanding tasks complete">done_all</mat-icon>
+                        <!-- <mat-icon aria-label="Set all outstanding tasks complete">done_all</mat-icon> -->
                     </h3>
                     <app-task-card class="col-3" *ngFor="let task of (tasks | outstandingTasks); let i = index;"
                         [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
@@ -32,7 +35,7 @@
                 </div>
                 <div class="completedTasksColumn">
                     <h3 class="filterTitle">Completed
-                        <mat-icon aria-label="Set all completed tasks approved">done_all</mat-icon>
+                        <!-- <mat-icon aria-label="Set all completed tasks approved">done_all</mat-icon> -->
                     </h3>
                     <app-task-card class="col-3" *ngFor="let task of (tasks | completedTasks); let i = index;"
                         [task]=task [currentRoute]="currentRoute" (taskCompleteEmit)="taskComplete($event)"
