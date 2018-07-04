@@ -1,29 +1,26 @@
+<h2 class="wishListSearchTitle">Choose Your Wish!</h2>
+<!-- <img class="ebaylogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4VtUsBNnK6cSYzAe7qQi1T9LMZBe34Pkl_uBCKa-J5oNVq8ab"
+  alt="Ebay Wish List" class="ebayimg"> -->
 
-<img class="ebaylogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4VtUsBNnK6cSYzAe7qQi1T9LMZBe34Pkl_uBCKa-J5oNVq8ab"
-  alt="Ebay Wish List" class="ebayimg">
+<input type="search" class="mySearch" [(ngModel)]="keyword" placeholder="Search an item...">
 
-<input type="search" id="mySearch" [(ngModel)]="keyword" placeholder="Search for something..">
-
-<button class="mySearchbtn" (click)="getItems()">Search</button>
+<button mat-raised-button class="mySearchbtn" (click)="getItems()" style="background-color: #42A5F5">Search</button>
 <p class="err">{{error}}</p>
 
-<h2 mat-dialog-title>Choose Your Wish!</h2>
+
 <mat-dialog-content class="wish-list-item" *ngFor="let wish of wishSearchData">
 
     <mat-card class="wish-card">
+        <img class="wishImage" src="{{wish.galleryURL}}">
+        <h1 class="wishTitle">{{ wish.title }}</h1>
+        <div style="margin-bottom: 10px;">
+            <span class="wishCond">{{wish.condition[0].conditionDisplayName}}</span>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <span class="wishPrice">{{wish.sellingStatus[0].currentPrice[0].__value__ | currency}}</span>
+        </div>
 
-        <br>
-        <!-- <mat-progress-bar mode="determinate" value="40">goal-bar</mat-progress-bar> -->
-
-        <img class="wish-img" src="{{wish.galleryURL}}">
-        <b class="wish-title"> {{wish.title}}</b>
-        <br class="wish-cond"> {{wish.condition[0].conditionDisplayName}}
-        <br class="wish-price"> price: {{wish.sellingStatus[0].currentPrice[0].__value__ | currency}} 
-        <br>
-
-            <button mat-button class="go" (click)="addToWishList(wish)">
-                <b>Add to Wish List</b>
-            </button>
+            <button mat-raised-button (click)="addToWishList(wish)" color="primary">Add to Wish List</button>
 
     </mat-card>
 </mat-dialog-content>

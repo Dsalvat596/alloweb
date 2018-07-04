@@ -34,7 +34,7 @@
 }
 
 .childBalance {
-    font-size: 14px;
+    font-size: 16px;
     padding: 0px 0px 0px 15px;
 }
 
@@ -48,6 +48,7 @@
 
 .userNameNoRespon {
     padding-right: 10px;
+    font-size: 15px;
 }
 
 .logOut {

@@ -22,9 +22,10 @@ mat-card.task-card {
     font-weight: 500;
     padding: 0px 0px 8px 0px;
     margin: 0px;
-    color: rgb(46, 46, 46);
+    /* color: rgb(46, 46, 46); */
+    color: #4CAF50;
 }
-
+ 
 .taskDescription {
     font-size: 15px;
     font-weight: 500;

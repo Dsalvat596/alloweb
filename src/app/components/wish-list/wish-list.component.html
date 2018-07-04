@@ -22,7 +22,7 @@
 
                     <mat-card-actions>
                         <a *ngIf="currentRoute =='wish-list/'" mat-raised-button href="{{wish.link}}"
-                            class="buyWish" color="primary" target="framename"
+                            class="buyWish" target="framename"
                             [disabled]="wish.progress < 100 " (click)="buyItNow(wish)">Buy</a>
 
                         <button mat-button *ngIf="currentRoute =='wish-list/'" (click)="removeWish(wish)">
@@ -44,19 +44,17 @@
 <mat-toolbar class="pageToolbar" *ngIf="currentRoute == 'wish-list/'">
     <h2 class="tasksPageTitle">My Wish-list</h2>
     <span class="example-spacer"></span>
-    <button mat-raised-button color="primary" (click)="openDialog()">
+    <button mat-raised-button style="background-color: #42A5F5" (click)="openDialog()">
         <mat-icon aria-label="Add icon">add</mat-icon>
-        Add a wish
+    <span class="add-child-text"> Add a wish</span>
     </button>
 </mat-toolbar>
 
-<div class="noWishes">
-    <mat-card *ngIf="noWish">
-        <h2>No Wishes :(</h2>
-    </mat-card>
+<div class="noWishes" *ngIf="currentRoute == 'wish-list/' && noWish">
+        <h3>*You have no wishes - add some!</h3>
 </div>
 
-<div class="myTasks" *ngIf="currentRoute == 'wish-list/'">
+<div class="myWishList" *ngIf="currentRoute == 'wish-list/'">
     <div class="row">
         <div class="childTaskContainer">
             <div class="wish-list-item" *ngFor="let wish of wishListData">
@@ -81,7 +79,7 @@
                             class="buyWish" color="primary" target="framename"
                             [disabled]="wish.progress < 100 " (click)="buyItNow(wish)">Buy</a> -->
                             <button mat-raised-button *ngIf="currentRoute =='wish-list/'"
-                                class="buyWish" color="primary" [disabled]="wish.progress < 100 "
+                                class="buyWish" style="background-color: #42A5F5" [disabled]="wish.progress < 100 "
                                 (click)="buyItNow(wish)">Buy</button>
 
                         <button mat-button *ngIf="currentRoute =='wish-list/'" (click)="removeWish(wish)">

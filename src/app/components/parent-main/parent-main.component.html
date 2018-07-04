@@ -1,9 +1,9 @@
 <mat-toolbar class="pageToolbar">
     <h2 class="tasksPageTitle">{{_currentParent.last_name}} Kids</h2>
     <span class="example-spacer"></span>
-    <button mat-raised-button color="primary" (click)="openDialog(_currentParent)">
+    <button mat-raised-button style="background-color: #42A5F5" (click)="openDialog(_currentParent)">
         <mat-icon aria-label="Add icon">add</mat-icon>
-        Add a child
+       <span class="add-child-text">Add a child</span>
     </button>
 </mat-toolbar>
 <div class="parent-landing">

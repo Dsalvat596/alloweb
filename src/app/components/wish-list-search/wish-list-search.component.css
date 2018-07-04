@@ -1,42 +1,58 @@
 .mat-dialog-container {
-  background: grey !important;
-  color: rgba(0, 0, 0, .87)}
+    background-color: #E9EAED;
+    color: rgba(0, 0, 0, .87)
+}
 
-.wish-list-item{
+.wish-list-item {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin-bottom: 15px;
     margin-top: 15px;
-    
- }
+}
 
- .mat-progress-bar{
-     margin: 15px ; 
-     width: 300px;
- }
+.wishListSearchTitle {
+    font-size: 25px;
+    font-weight: 500;
+    color: #4CAF50;
+    text-align: center;
+    margin: 8px 10px 30px 10px;
+}
+
+.mat-progress-bar {
+    margin: 15px;
+    width: 300px;
+}
+
 img {
     width: 35%;
     height: 150px;
-    float:left ; 
-    padding: 20px ; 
- }
-        
- .wish-card {
-    margin-top: 15px;
-    width: 400px;
-    background-color: #FFFFFF ; 
- }
- 
- .mat-card{
-    padding: 0.5% ;
- }
-
-.go{
-    color: green ; 
+    float: left;
+    padding: 20px;
 }
 
-#mySearch , .mySearchbtn {
+/* .wish-card {
+    margin-top: 15px;
+    width: 400px;
+    background-color: #FFFFFF;
+} */
+
+mat-card.wish-card {
+    padding: 30px 30px 30px 30px;
+    /* max-width: 260px; */
+    max-width: 100%;
+    min-width: 180px;
+    /* margin: 0px 15px 15px 0px; */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.mat-card {
+    padding: 0.5%;
+}
+
+.mySearch {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -44,14 +60,63 @@ img {
     margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
+    padding: 30px;
+    height: 45px;
     width: 50%;
-    width: 400px;
+}
+
+.mySearchbtn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white ; 
 }
 
 .ebayimg {
-  border-radius: 50%;
-  vertical-align: middle;
-  width: 150px;
-  height: 60px;
-  position: sticky;
+    border-radius: 50%;
+    vertical-align: middle;
+    width: 150px;
+    height: 60px;
+    position: sticky;
+}
+
+.wishTitle {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 0px 8px 0px;
+    margin: 0px;
+    color: #4CAF50;
+}
+
+.wishCond {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.616);
+    padding: 0px;
+    padding-right: 15px;
+    margin: 0px;
+}
+
+.wishPrice {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.616);
+    padding: 0px;
+    padding-right: 15px;
+    margin: 0px;
+}
+
+img.wishImage {
+    border-radius: 50%;
+    /* vertical-align: middle; */
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    padding: 0px;
+    margin-bottom: 10px;
+    float: none;
 }

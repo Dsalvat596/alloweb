@@ -13,6 +13,22 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+.noWishes {
+    background-color: #FEF9DA;
+    border: 1px solid #e6d678;
+    display: block;
+    margin: 0px;
+    padding: 15px;
+}
+
+.noWishes h3 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #9d8a59;
+}
+
 .example-spacer {
     flex: 1 1 auto;
 }
@@ -25,7 +41,7 @@
 .main {
     flex: 60%;
     background-color: #E9EAED;
-    padding: 20px 50px 20px 50px;
+    /* padding: 20px 50px 20px 50px; */
 }
 
 .tasks {
@@ -42,13 +58,17 @@
     border-radius: 5px;
 }
 
-.myTasks {
-    padding: 15px;
+.myWishList {
+    padding: 30px 15px 15px 15px;
     margin: 0 auto;
     max-width: 600px;
     min-width: 200px;
     /* width: 400px; */
     /* max-width: */
+}
+
+.childTaskContainer {
+    width: 100%;
 }
 
 .expander-container {
@@ -83,9 +103,10 @@ img {
 
 mat-card.wish-card {
     padding: 30px 30px 30px 30px;
-    max-width: 260px;
-    min-width: 220px;
-    margin: 0px 15px 15px 0px;
+    /* max-width: 260px; */
+    max-width: 100%;
+    min-width: 180px;
+    /* margin: 0px 15px 15px 0px; */
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -113,7 +134,7 @@ img.wishImage {
     font-weight: 500;
     padding: 0px 0px 8px 0px;
     margin: 0px;
-    color: rgb(46, 46, 46);
+    color: #4CAF50;
 }
 
 /* .taskDescription {
@@ -179,7 +200,27 @@ img.wishImage {
     transform: scale(1.1)
 }
 
-#mySearch, .mySearchbtn {
+mat-icon {
+    color: white
+}
+
+.buyWish
+{
+ background-color: #42A5F5;
+ color: white
+}
+
+.buyWish:disabled  { 
+    background-color: rgba(189, 187, 187, 0.822) !important
+}
+
+.add-child-text{
+     color: white
+}
+
+
+
+/* #mySearch, .mySearchbtn {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -189,7 +230,8 @@ img.wishImage {
     margin-right: auto;
     width: 50%;
     width: 400px;
-}
+} */
+
 
 /* Progress bar  ************************************************************/
 

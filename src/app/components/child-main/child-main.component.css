@@ -130,7 +130,9 @@
 }
 
 h2.columnTitle {
-    color: #4CAF50;
+    /* color: #4CAF50; */
+    /* color: rgb(46, 46, 46); */
+    color: #787878;
     font-weight: 500;
     font-size: 21px;
     /* margin-top: 30px; */
@@ -283,4 +285,23 @@ mat-grid-tile {
 
 .split right {
     margin-top: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+    .outstandingTasksColumn {
+        flex: 100%;
+        padding-right: 0px;
+    }
+    .completedTasksColumn {
+        flex: 100%;
+        padding-left: 0px;
+    }
+    .childCompletedTasks {
+        flex: 100%;
+        padding: 0px;
+    }
+    .childApprovedTasks {
+        flex: 100%;
+        padding: 0px;
+    }
 }

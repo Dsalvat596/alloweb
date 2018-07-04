@@ -1,4 +1,4 @@
-<mat-toolbar class="sidePadding" color="primary">
+<mat-toolbar class="sidePadding" style="background-color: #42A5F5" color="primary">
     <!--  *ngIf="!currentRoute == 'login-page'" -->
     <span class="logo">Alloweb</span>
     <!--  routerLink="/parent-main" -->
@@ -7,9 +7,9 @@
         <!-- active-link routerLinkActive="mat-accent" -->
         <!-- <button mat-button routerLink="/child-main" *ngIf="!parent.is_parent">Home</button> -->
         <button mat-button class="TasksNoRespon" (click)="navigateToChildTasks(parent.user_id)"
-            *ngIf="!parent.is_parent">My Tasks</button>
+            *ngIf="!parent.is_parent" style="font-size:15px;">My Tasks</button>
         <button mat-button class="WishesNoRespon" (click)="navigateToChildWishList(parent.user_id)"
-            *ngIf="!parent.is_parent">WishList</button>
+            *ngIf="!parent.is_parent" style="font-size:15px;">WishList</button>
 
         <button mat-button class="responTasks" (click)="navigateToChildTasks(parent.user_id)"
             *ngIf="!parent.is_parent">

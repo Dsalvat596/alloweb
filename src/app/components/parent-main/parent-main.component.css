@@ -18,7 +18,13 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
 }
+.add-child-text{
+    color: white;
+}
 
+mat-icon {
+    color: white
+}
 .appChildCard {
     margin: 15px;
 }
