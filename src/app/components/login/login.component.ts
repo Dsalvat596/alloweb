@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
 
+        //test
+
     }
 
     parentLogin() {
